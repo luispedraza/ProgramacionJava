@@ -11,16 +11,16 @@ package Temas.Tema08Sincornizacion;
 class MiThread extends  Thread {
 
     public static int x = 0;
-    private int incremento;
+    private int incremento = 0;
 
     public MiThread (int incremento) {
         this.incremento = incremento;
     }
     @Override
     public void run() {
-        for (int i = 0; i < 1000000; i++) {
-            this.x += incremento;
-            System.out.println(this.x);
+        for (int i = 0; i < 100000; i++) {
+            MiThread.x += incremento;
+            // System.out.println(MiThread.x);
         }
     }
 }
@@ -28,10 +28,16 @@ class MiThread extends  Thread {
 
 public class CarreraDosHilos {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         MiThread thread1 = new MiThread(1);
-        thread1.start();
         MiThread thread2 = new MiThread(-1);
+        thread1.start();
         thread2.start();
+        // Esperamos a que los dos hilos finalicen
+        thread1.join();
+        thread2.join();
+        // Valor final del contador:
+        System.out.println(String.format("Valor final: %d", MiThread.x));
+
     }
 }
