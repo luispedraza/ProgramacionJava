@@ -25,12 +25,11 @@ class MiThread extends  Thread {
     }
 }
 
-
 public class CarreraDosHilos {
 
     public static void main(String[] args) throws InterruptedException {
         MiThread thread1 = new MiThread(1);
-        MiThread thread2 = new MiThread(-1);
+        MiThread thread2 = new MiThread(1);
         thread1.start();
         thread2.start();
         // Esperamos a que los dos hilos finalicen

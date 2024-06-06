@@ -15,7 +15,6 @@ import java.util.concurrent.Semaphore;
 class MiThreadSynchronizedMethod extends  Thread {
 
     public static int x = 0;
-    private static Object obj = new Object();
     private int incremento;
 
     private static synchronized void operation(int incremento) {
@@ -35,10 +34,15 @@ class MiThreadSynchronizedMethod extends  Thread {
 }
 
 public class CarreraDosHilosSynchronizedMethod {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         MiThreadSynchronizedMethod thread1 = new MiThreadSynchronizedMethod(1);
         thread1.start();
         MiThreadSynchronizedMethod thread2 = new MiThreadSynchronizedMethod(-1);
         thread2.start();
+        // Esperamos a que los dos hilos finalicen
+        thread1.join();
+        thread2.join();
+        // Valor final del contador:
+        System.out.println(String.format("Valor final: %d", MiThreadSynchronizedBlock.x));
     }
 }

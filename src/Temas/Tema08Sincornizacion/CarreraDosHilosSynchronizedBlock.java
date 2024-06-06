@@ -25,7 +25,7 @@ class MiThreadSynchronizedBlock extends  Thread {
         for (int i = 0; i < 1000000; i++) {
             synchronized (obj) {
                 this.x += incremento;
-                System.out.println(this.x);
+                // System.out.println(this.x);
             }
 
         }

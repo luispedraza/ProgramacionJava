@@ -25,13 +25,13 @@ class MiThreadSemaforo extends  Thread {
     public void run() {
         for (int i = 0; i < 1000000; i++) {
             try {
-                semaforo.acquire();
+                semaforo.acquire(); // WAIT
                 x += incremento;
                 // System.out.println(x);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                semaforo.release();
+                semaforo.release(); // SIGNAL
             }
         }
     }
