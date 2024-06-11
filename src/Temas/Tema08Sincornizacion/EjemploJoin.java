@@ -29,6 +29,7 @@ public class EjemploJoin {
         tareaD.start();
         tareaC.join();
         tareaD.join();
+        //tareaB.start();
         Thread tareaB2 = new Thread(new TareaConNombre(), "B"); // Hilo con nombre B
         tareaB2.start();
     }

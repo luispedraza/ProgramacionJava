@@ -19,7 +19,7 @@ class MiThreadSynchronizedMethod extends  Thread {
 
     private static synchronized void operation(int incremento) {
         x += incremento;
-        System.out.println(x);
+        // System.out.println(x);
     }
     public MiThreadSynchronizedMethod (int incremento) {
         this.incremento = incremento;
