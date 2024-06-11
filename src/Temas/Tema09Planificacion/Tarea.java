@@ -9,7 +9,7 @@ class Tarea implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
-            System.out.println(String.format("Ejecutando tarea: %d", id));
+            System.out.println(String.format("Ejecutando tarea: %d (%d)", id, i));
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
