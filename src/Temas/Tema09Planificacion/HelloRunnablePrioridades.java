@@ -15,7 +15,13 @@ public class HelloRunnablePrioridades implements Runnable {
         String name = Thread.currentThread().getName(); // el nombre del Thread actual
         for (int i = 0; i < 100; i++) {
             System.out.println("Hola desde el thread " + name);
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
+        System.out.println("========> Fin de la tarea: " + name);
     }
 
     public static void main(String args[]) {

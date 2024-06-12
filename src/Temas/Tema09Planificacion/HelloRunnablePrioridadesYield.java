@@ -16,11 +16,21 @@ public class HelloRunnablePrioridadesYield implements Runnable {
         String name = Thread.currentThread().getName(); // el nombre del Thread actual
         for (int i = 0; i < 100; i++) {
             System.out.println("Hola desde el thread " + name);
-            if ((i % 10 == 0) && Thread.currentThread().getPriority() == Thread.MIN_PRIORITY)
+
+            if ((i % 2 == 0) && Thread.currentThread().getPriority() == Thread.MIN_PRIORITY)
                 Thread.yield();
-            if ((i % 20 == 0) && Thread.currentThread().getPriority() == Thread.NORM_PRIORITY)
+                // Procesos con prioridad MIN_PRIORITY solo puede llegar a ejecutar 2 ciclos seguidos
+            if ((i % 10 == 0) && Thread.currentThread().getPriority() == Thread.NORM_PRIORITY)
                 Thread.yield();
+            // Procesos con prioridad NORM_PRIORITY solo puede llegar a ejecutar 10 ciclos seguidos
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
+
+        System.out.println("========> Fin de la tarea: " + name);
     }
 
     public static void main(String args[]) {
