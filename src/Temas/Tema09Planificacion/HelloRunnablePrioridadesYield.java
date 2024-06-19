@@ -23,11 +23,7 @@ public class HelloRunnablePrioridadesYield implements Runnable {
             if ((i % 10 == 0) && Thread.currentThread().getPriority() == Thread.NORM_PRIORITY)
                 Thread.yield();
             // Procesos con prioridad NORM_PRIORITY solo puede llegar a ejecutar 10 ciclos seguidos
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+
         }
 
         System.out.println("========> Fin de la tarea: " + name);

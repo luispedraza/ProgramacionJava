@@ -12,7 +12,7 @@ public class TestMain {
 		
 		double result[][] = new double[matrix1.length][matrix2[0].length];
 		Date start = new Date();
-		// SerialMultiplier.multiply(matrix1, matrix2, result); // Multiplicación serie - sin concurrencia
+		SerialMultiplier.multiply(matrix1, matrix2, result); // Multiplicación serie - sin concurrencia
 		Date end = new Date();		
 		System.out.printf("Algoritmo Serial :%d%n", end.getTime() - start.getTime());
 		
