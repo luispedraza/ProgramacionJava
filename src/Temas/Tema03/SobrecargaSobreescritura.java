@@ -5,6 +5,10 @@ package Temas.Tema03;
  * OVERLOADING
  */
 
+/**
+ * La clase Calculadora tiene el método "sumar" sobrecargado.
+ * El método tiene 3 formas diferentes
+ */
 class Calculadora {
     public int sumar (int a, int b) {
         return a+b;
@@ -12,7 +16,6 @@ class Calculadora {
     public int sumar (int a, int b, int c) {
         return a + b + c;
     }
-
     public float sumar (float a, float b) {
         return a + b;
     }
@@ -31,19 +34,15 @@ class CalculadoraMensajes extends Calculadora {
     }
 
     public float sumar(float a, float b, float c) {
+        // Sobrecargamos el método sumar, que viene heredado, dándose una forma diferente
         float resultado = a + b + c; // Podemos llamar al método en la clase padre
         System.out.println(String.format("%f + %f + %f = %f", a, b, c, resultado));
         return resultado;
     }
 }
+
 public class SobrecargaSobreescritura {
-    /**
-     * La clase Calculadora1 tiene el método "sumar" sobrecargado.
-     * El método tiene 3 formas diferentes
-     */
-
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         CalculadoraMensajes calc = new CalculadoraMensajes();
         calc.sumar(6.2f, 9.7f);
         calc.sumar(1.5f, 3.2f, 4.8f);
